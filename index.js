@@ -48,7 +48,7 @@ app.on("request", (req, res) => {
     res.writeHead(httpStatus.StatusCodes.OK, {
       "Content-Type": "image/png",
     });
-    customReadFile(`./public/images${url}`, res);
+    customReadFile(`./Images${url}`, res);
   } else {
     sendErrorResponse(res);
   }
