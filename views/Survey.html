@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function validateForm() {
+                var x = document.forms["Form1"]["Name"]["Date of Birth"].value;         //https://www.w3schools.com/howto/howto_js_validation_empty_input.asp(Reference for exception handling)
+                if (x == "" || x == null) {
+                    alert("All forms must be filled out");
+                    return false;
+                }
+            }
+        </script>
+        <title>
+            Survey
+        </title>
+        <style type="text/css">
+            div.navigation {
+                height: 100%;
+                width: 150px;
+                background-color:lightblue;
+                position: fixed;
+            }
+            div.text {
+                width: 100%;
+                padding-left: 200px;
+                
+            }
+        </style>
+        <div class="navigation">
+            
+            <ul>
+                <li><a href="Index.html">Homepage</a></li><br>
+                <li><a href="Bookslist.html">Bookslist</a></li><br>
+                <li><a href="ContactUs.html">Contact Us</a></li><br>
+                <li><a href="Survey.html">Survey Page</a></li><br>
+                <li><a href="Honesty.html">Honesty</a></li><br>
+            </ul>
+        </div>
+    </head>        
+    <body>
+        <h1 style="text-align: center;">
+            Survey Page
+        </h1>
+        
+        <div class="text">
+            <form name:"Form1" action="Survey.html" method="post" onsubmit="return validateForm()">
+                <p>Name:
+                    <input type="text" name="Name" size="15" maxlength="45" required><br><br>
+                    Date of Birth:
+                <input type="date" name="Date of Birth" required><br><br>
+                "How likely is it that you recommend this library to your friends:"
+                <input type="radio" name="Recommend" value="Very Likely" checked="checked" /> Very Likely
+                    <input type="radio" name="Recommend" value="Somewhat Likely" checked="checked" /> Somewhat Likely
+                    <input type="radio" name="Recommend" value="Not Likely" checked="checked" /> Not Likely
+                    <br>
+                    <input type="submit" name="submit" value="submit">
+                </p>
+            </form>
+            
+            
+            
+        </div>
+    </body>
+</html>
