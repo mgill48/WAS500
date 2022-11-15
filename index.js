@@ -8,6 +8,7 @@ const sendErrorResponse = (res) => {
     "Content-Type": "text/html",
   });
   res.write("<h1>File Not Found!</h1>");
+  
   res.end();
 };
 
@@ -30,11 +31,17 @@ const customReadFile = (file_path, res) => {
 const app = http.createServer();
 app.on("request", (req, res) => {
   let url = req.url;
+  console.log(req)
   if (url.indexOf(".html") !== -1) {
     res.writeHead(httpStatus.StatusCodes.OK, {
       "Content-Type": "text/html",
     });
     customReadFile(`./views${url}`, res);
+  } else if (url == "/") {
+    res.writeHead(httpStatus.StatusCodes.OK, {
+      "Content-Type": "text/html",
+    });
+    customReadFile(`./views/index.html`, res);
   } else if (url.indexOf(".js") !== -1) {
     res.writeHead(httpStatus.StatusCodes.OK, {
     });
@@ -51,6 +58,7 @@ app.on("request", (req, res) => {
     customReadFile(`./Images${url}`, res);
   } else {
     sendErrorResponse(res);
+    console.log(res);
   }
 });
 app.listen(port);
